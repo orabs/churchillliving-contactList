@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <mat-grid-list cols="1" rowHeight="300px">
+    
+    <mat-grid-tile>
+              <input  type='file' (change)="readURL($event,contact);" #img_input style="display:none">
+              <img width=80 height=60 class="avatar" (click)="img_input.click()" [src]="img_profile">
+      <div class="controles-container">
+
+        <mat-form-field>
+          <input formControlName="first_name" matInput placeholder="First Name*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="last_name" matInput placeholder="Last Name">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+<input formControlName="phone" matInput placeholder="Phone*">
+<mat-error *ngIf="service.form.controls['phone'].errors?.required">This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+<input formControlName="address" matInput placeholder="Address">
+
+        </mat-form-field>
+      </div>
+<mat-form-field>
+  <input formControlName="facebook" matInput placeholder="FaceBook">
+
+</mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
