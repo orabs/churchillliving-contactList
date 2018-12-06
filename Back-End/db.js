@@ -5,9 +5,8 @@ port = process.env.PORT || 4205;
 if (port === 4205) {
 
     var connection = mysql.createConnection({
-        host: '209.97.128.98',
-        user: 'arbeson2',
-        password: 'c7ryovGe',
+        host: 'localhost',
+        password: '',
         database: 'contactList'
     });
 } else {
